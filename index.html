@@ -16,7 +16,7 @@ document.addEventListener("deviceready",function (){
 		navigator.device.capture.captureImage(function (Foto){
 			ruta=Foto[0].fullPath;
 			//colocar la imagen en la aplicación utilizando una etiqueta <img>
-			$("#imagen").append("<img src="+ruta+"width='100%' />");
+			$("#imagen").append('<img src="'+ruta+'" width="100%" />').attr('rel',ruta);
 			},function (error){
 			navigator.notification.alert("Error: "+error.code,null,"Captura de error");
 			},{limit:1});
