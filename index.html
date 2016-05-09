@@ -57,8 +57,8 @@ document.addEventListener("deviceready",function (){
 			}else{
 					jQuery.ajax({
 						type:"POST",
-						/*url:"http://itslmoviles.260mb.net/guardar.php",*/
-						url:"guardar.php",
+						url:"http://itslmoviles.260mb.net/guardar.php",
+						/*url:"guardar.php",*/
 						data:"nomb="+nom+"&direc="+dir+"&Rfc="+rfc+"&telef="+tel+"&classif="+clasif+"&latit="+lat+"&longit="+longt+"&Foto="+foto,
 						success: function (mensaje){
 							alert("Respuesta:"+mensaje);
