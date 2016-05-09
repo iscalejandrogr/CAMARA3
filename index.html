@@ -13,23 +13,25 @@
 opciones={maximumage:500000, enableHighAccuracy:true,timeout:5000};
 var ruta="images/foto.jpg";
 
+jQuery.noConflict();
+
 document.addEventListener("deviceready",function (){
-		$("#btnTomarFoto").tap(function (){
+		jQuery("#btnTomarFoto").tap(function (){
 			navigator.device.capture.captureImage(function (Foto){
 			ruta=Foto[0].fullPath;
 			//colocar la imagen en la aplicación utilizando una etiqueta <img>
-			$("#imagen").append('<img src="'+ruta+'" width="100%" />').attr('rel',ruta);
+			jQuery("#imagen").append('<img src="'+ruta+'" width="100%" />').attr('rel',ruta);
 			},function (error){
 			navigator.notification.alert("Error: "+error.code,null,"Captura de error");
 			},{limit:1});
 		});
 
-		$("#btnCords").tap(function (){
+		jQuery("#btnCords").tap(function (){
 			if(navigator.geolocation){
 				navigator.geolocation.getCurrentPosition(exito, falla, opciones);
 			   function exito(ubicacion){
-					 	$("#txtLatitud").val(ubicacion.coords.latitude);
-		 				$("#txtLongitud").val(ubicacion.coords.longitude);
+					 	jQuery("#txtLatitud").val(ubicacion.coords.latitude);
+		 				jQuery("#txtLongitud").val(ubicacion.coords.longitude);
 			   }
 
 			   function falla(error){
@@ -40,20 +42,20 @@ document.addEventListener("deviceready",function (){
 			}
 		});
 
-		$("#btnGuardar").tap(function (){
-			var nom=$("#txtNomServ").val();
-			var dir=$("#txtDirec").val();
-			var rfc=$("#txtRFC").val();
-			var tel=$("#txtTelefono").val();
-			var clasif=$("#selecClasif").val();
-			var lat=$("#txtLatitud").val();
-			var longt=$("#txtLongitud").val();
+		jQuery("#btnGuardar").tap(function (){
+			var nom=jQuery("#txtNomServ").val();
+			var dir=jQuery("#txtDirec").val();
+			var rfc=jQuery("#txtRFC").val();
+			var tel=jQuery("#txtTelefono").val();
+			var clasif=jQuery("#selecClasif").val();
+			var lat=jQuery("#txtLatitud").val();
+			var longt=jQuery("#txtLongitud").val();
 			var foto=ruta;
 
 			if(nom=="" || dir=="" || rfc=="" ||tel==""|| clasif=="" ||lat==""|| longt=="" ){
 				alert("Favor de escribir valores en todos los campos");
 			}else{
-					$.ajax({
+					jQuery.ajax({
 						type:"POST",
 						/*url:"http://itslmoviles.260mb.net/guardar.php",*/
 						url:"guardar.php",
