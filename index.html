@@ -59,10 +59,18 @@ document.addEventListener("deviceready",function (){
 						type:"POST",
 						url:"http://itslmoviles.260mb.net/guardar.php",
 						/*url:"guardar.php",*/
+						//url:"http://iscitslibres.com/iscmoviles/guardar.php",
 						data:"nomb="+nom+"&direc="+dir+"&Rfc="+rfc+"&telef="+tel+"&classif="+clasif+"&latit="+lat+"&longit="+longt+"&Foto="+foto,
-						success: function (mensaje){
+						/*success: function (mensaje){
 							alert("Respuesta:"+mensaje);
-						}
+						}*/
+					}).done(function(mensaje){
+						//alert("Respuesta:"+mensaje);
+						//if(mensaje){
+						navigator.notification.alert("Respuesta:"+mensaje, null, "Notificacion", "Aceptar");
+						//}else{
+						//navigator.notification.alert("Los datos no fueron enviados correctamente", null, "Error de Registro", "Aceptar");
+						//}
 					});
 				}
 		});
